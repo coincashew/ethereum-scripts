@@ -7,7 +7,7 @@ by coincashew.eth [ https://coincashew.com ]
 ## Install quickly and conveniently with this command (from your Ubuntu Linux machine):
 
 ```
-curl -sSL https://raw.githubusercontent.com/coincashew/ethereum-scripts/main/eth-node-install-besu-lodestar.sh | bash
+curl -sSL https://raw.githubusercontent.com/coincashew/ethereum-scripts/main/eth-node-besu-lodestar.sh | bash
 ```
 
 ```
@@ -16,7 +16,7 @@ curl -sSL https://raw.githubusercontent.com/coincashew/ethereum-scripts/main/eth
  [✗] Tested as NOT working with Ubuntu 22.04 due to nodejs issues
 ```
 
-Improvements, pull-requests and feedback greatly welcome at:
+Improvements, issues, pull-requests and feedback greatly welcome at:
 [github.com](https://github.com/coincashew/ethereum-scripts/)
 
 ### Donations: coincashew.eth
@@ -33,6 +33,7 @@ curl -sS -o eth-node-install-besu-lodestar.sh https://raw.githubusercontent.com/
 chmod 755 eth-node-install-besu-lodestar.sh
 ./eth-node-install-besu-lodestar.sh
 ```
+
 ### Pro tips:
 * Always test first on Testnets !!!
 * Use time synchronization, such as Chrony.
@@ -50,7 +51,7 @@ bestar :: most diverse client :: besu EL and lodestar-consensus CL
 =====================================================================
 
 USAGE:
-	eth-node-install-besu-lodestar.sh [-u] [-w] [-n <ropsten|mainnet|kiln> ] [-d] [-c] [-g] [-x] [-s] [-o] [-a] [-k] [-v] [-i] [-t] [-q] [-z] [-r]
+	eth-node-besu-lodestar.sh [-u] [-w] [-n <ropsten|mainnet|kiln> ] [-d] [-c] [-g] [-x] [-s] [-o] [-a] [-k] [-v] [-i] [-t] [-q] [-z] [-r]
 
 FLAGS:
 	-u          Upgrade node to the latest EL and CL versions

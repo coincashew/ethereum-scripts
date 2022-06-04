@@ -16,6 +16,17 @@ curl -sSL https://raw.githubusercontent.com/coincashew/ethereum-scripts/main/eth
  [✗] Tested as NOT working with Ubuntu 22.04 due to nodejs issues
 ```
 
+## Objectives
+* Strength the Most Diverse Client -- Lodestar and Besu 
+* Simple to use for the home solo staker
+* Fully automated installation
+* Easy to use with Ubuntu Linux
+* Simple to read, understand and modify
+* No docker requirements
+* Interruptible and self-recoverable
+* Self-updating to the latest version
+* Built-in tests for common node issues, such as lack of disk space, internet speed, or ram
+
 Improvements, issues, pull-requests and feedback greatly welcome at:
 [github.com](https://github.com/coincashew/ethereum-scripts/)
 

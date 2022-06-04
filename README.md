@@ -17,7 +17,7 @@ curl -sSL https://raw.githubusercontent.com/coincashew/ethereum-scripts/main/eth
 ```
 
 ## Objectives
-* Strength the Most Diverse Client -- Lodestar and Besu 
+* Strengthen the Most Diverse Client -- Lodestar CL and Besu EL 
 * Simple to use for the home solo staker
 * Fully automated installation
 * Easy to use with Ubuntu Linux
@@ -46,9 +46,9 @@ chmod 755 eth-node-install-besu-lodestar.sh
 ```
 
 ### Pro tips:
-* Always test first on Testnets !!!
-* Use time synchronization, such as Chrony.
-* Take security seriously. Use the firewall option -w
+* Always test first on Testnets !!! Then you can graduate to mainnet.
+* Don't attest too late. Use time synchronization, such as Chrony.
+* Take [security](https://www.coincashew.com/coins/overview-eth/guide-or-how-to-setup-a-validator-on-eth2-mainnet/part-i-installation/guide-or-security-best-practices-for-a-eth2-validator-beaconchain-node) seriously. Use the firewall option -w
 * Keep validator keys offline! And have fun !!!
 
 Before continuing, please learn the syntax of this script. To view the usage options, use ./eth-node-install-besu-lodestar.sh -h

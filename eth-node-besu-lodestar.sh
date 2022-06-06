@@ -58,7 +58,7 @@ INSTALL_QUICK=N                      # Quickly installs base Ethereum node with 
 # Thanks for your support, home stakers and all.
 #
 
-CC_VERSION=0.7.8
+CC_VERSION=0.7.9
 CC_BRANCH="main"
 CC_REPO="https://github.com/coincashew/ethereum-scripts"
 CC_REPO_RAW="https://raw.githubusercontent.com/coincashew/ethereum-scripts"
@@ -809,7 +809,9 @@ configure_network_config_files(){
 	fi
 
 	if [[ $installtype == "execution_consensus_validator_node" ]]; then
-		EL_ADDITIONAL_PARAMETERS="${EL_ADDITIONAL_PARAMETERS}\nminer-enabled=true\nminer-coinbase=\"$SUGGESTED_FEE_RECIPIENT\""
+		EL_ADDITIONAL_PARAMETERS="${EL_ADDITIONAL_PARAMETERS}\nminer-enabled=true\nminer-coinbase=\"${SUGGESTED_FEE_RECIPIENT}\""
+		CL_ADDITIONAL_PARAMETERS="${CL_ADDITIONAL_PARAMETERS} --chain.defaultFeeRecipient ${SUGGESTED_FEE_RECIPIENT}"
+		VC_ADDITIONAL_PARAMETERS="${VC_ADDITIONAL_PARAMETERS} --defaultFeeRecipient ${SUGGESTED_FEE_RECIPIENT}"
 	fi
 }
 
@@ -1028,6 +1030,7 @@ metrics-port=6060
 engine-jwt-enabled=true
 engine-jwt-secret="$EL_DATABASE_PATH/jwtsecret"
 engine-host-allowlist=["*"]
+engine-rpc-port=8551
 EOF
 
 # Add network-specific EL parameters
@@ -1111,6 +1114,10 @@ install_CL() {
 	ensure sudo chown $CL_service_account_name:$CL_service_account_name $CL_DATABASE_PATH
 	ensure sudo chmod 700 $CL_DATABASE_PATH
 
+	say "Copying jwtsecret..."
+	ensure sudo cp /secrets/jwtsecret $CL_DATABASE_PATH/jwtsecret
+	ensure sudo chown -R $CL_service_account_name:$CL_service_account_name $CL_DATABASE_PATH
+
 	say "Updating repos ..."
 	ignore sudo apt-get update -qq
 
@@ -1142,12 +1149,9 @@ ExecStart=/usr/local/bin/ls/lodestar beacon \
   --network $NETWORK \
   --rootDir "$CL_DATABASE_PATH" \
   --execution.urls "http://127.0.0.1:8551" \
-  --eth1.providerUrls "http://127.0.0.1:8545" \
-  --jwt-secret "$SECRETS_PATH/jwtsecret" \
+  --jwt-secret "$CL_DATABASE_PATH/jwtsecret" \
   --network.connectToDiscv5Bootnodes \
   --network.discv5.enabled true \
-  --eth1.depositContractDeployBlock 0 \
-  --eth1.enabled true \
   --api.rest.enabled true \
   --api.rest.host 0.0.0.0 \
   --api.rest.api "*" \
